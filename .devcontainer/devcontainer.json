@@ -1,0 +1,60 @@
+{
+    "name": "WordPress Plugin Boilerplate",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "wordpress",
+    "workspaceFolder": "/workspace",
+    "shutdownAction": "stopCompose",
+    
+    // Use 'settings' to set *default* container specific settings.json values on container create. 
+    // You can edit these settings after create using File > Preferences > Settings > Remote.
+    "settings": { 
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "mounts": [
+        {
+            "type": "bind",
+            "source": "${localWorkspaceFolder}/bka-platform",
+            "target": "/var/www/html/wp-content/plugins/bka-platform"
+        },
+        {
+            "type":"bind",
+            "source":"${localWorkspaceFolder}",
+            "target":"/workspace"
+        },
+        {
+            "type":"bind",
+            "source":"${localWorkspaceFolder}/wp_config/wp-config.php",
+            "target":"/var/www/html/wp-config.php"
+        }
+
+    ],
+        
+    // Use 'appPort' to create a container with published ports. If the port isn't working, be sure
+    // your server accepts connections from all interfaces (0.0.0.0 or '*'), not just localhost.
+    // "appPort": [],
+
+    // Uncomment the next line to run commands after the container is created.
+    // "postCreateCommand": "php -v",
+
+    // Comment out if you want to use root
+    "remoteUser": "vscode",
+    // Add the IDs of extensions you want installed when the container is created in the array below.
+    "extensions": [
+        "felixfbecker.php-debug",
+        "felixfbecker.php-intellisense",
+        "ikappas.composer",    
+        "dbaeumer.vscode-eslint",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "github.copilot",
+        "github.copilot-chat",
+        "ikappas.composer",
+        "ms-azuretools.vscode-docker",
+        "phpcf.phpcf",
+        "emeraldwalk.runonsave",
+        "persoderlind.vscode-phpcbf@0.0.8",
+        "simone-baldini.vscode-phpcbf@0.0.3",
+        "theodejager.vscode-php-cbf@1.0.0"
+    ],
+    "postCreateCommand": ".devcontainer/setup.sh"
+}
