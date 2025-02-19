@@ -118,3 +118,136 @@ form input[type="submit"]:hover {
     font-size: 12px;
     margin-bottom: 5px;
 }
+
+
+/* Display Coaches */
+
+.coach-search {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#coach-search-input {
+    padding: 10px;
+    width: 80%;
+    max-width: 400px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.coach-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.coach-item {
+    width: 45%;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.coach-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.coach-info h2 {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.coach-info p {
+    margin: 5px 0;
+}
+
+/* Styles for the edit user form */
+
+.edit-user-form {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.language-tabs {
+    margin-top: 20px;
+}
+
+.language-tabs .tabs {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--background-secondary);
+    border-bottom: none;
+    justify-content: center;
+    width: 100%;
+}
+
+.language-tabs .tab-link {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 50%;
+    text-align: center;
+}
+
+.language-tabs .tab-link:hover {
+    background-color: var(--primary-color-hover);
+    color: var(--text-color);
+}
+
+.language-tabs .tab-link.current {
+    background-color: var(--primary-color);
+    border-top: none;
+    color: var(--text-color);
+    border-bottom: 2px solid var(--primary-color-hover);
+    width: 50%;
+}
+
+.language-tabs .tab-link.current:hover {
+    background-color: var(--primary-color-hover);
+    color: var(--text-color);
+}
+
+.language-tabs .tab-content {
+    display: none;
+    padding: 20px;
+    border-top: none;
+}
+
+.language-tabs .tab-content.current {
+    display: block;
+    width: 100%;
+}
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

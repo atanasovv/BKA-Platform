@@ -1,5 +1,6 @@
 <?php
 
+
 class QuestionTranslation {
     public $id;
     public $question_id;

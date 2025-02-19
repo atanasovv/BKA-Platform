@@ -1,7 +1,6 @@
 <?php
 
 
-
 class SessionRepository extends BaseRepository {
     public function __construct() {
         parent::__construct('bka_sessions');

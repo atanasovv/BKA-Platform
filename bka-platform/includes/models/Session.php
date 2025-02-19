@@ -1,5 +1,6 @@
 <?php
 
+
 class Session {
     public $id;
     public $start_datetime;

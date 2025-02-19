@@ -1,6 +1,5 @@
 <?php
 
-
 class QuestionRepository extends BaseRepository {
     public function __construct() {
         parent::__construct('bka_questions');

@@ -31,6 +31,7 @@ if (! defined('WPINC')) {
 }
 
 define('BKA_PLATFORM_VERSION', '1.0.0');
+define('DEFAULT_LANG_CODE', function_exists('pll_current_language') ? pll_current_language() : get_locale());
 
 if (! class_exists('BkaPlatform')) {
 
@@ -49,20 +50,30 @@ if (! class_exists('BkaPlatform')) {
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/bka-option-page.php';
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/bka-platform-i18n.php';
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/bka-database-manager.php';
+            include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/bks-global-variables.php';
+            include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/bka-router.php';
+
+            # Repositories
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/repositories/BaseRepository.php';
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/repositories/ClientRepository.php';
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/repositories/CoachRepository.php';
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/repositories/SessionRepository.php';
+            include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/repositories/BkaUserRepository.php';
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/repositories/QuestionRepository.php';
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/repositories/QuestionTranslationRepository.php';
-            include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/models/Client.php';
-            include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/models/Coach.php';
+            include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/repositories/BkaUserDetailsRepository.php';
+
+            # Models
+            include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/models/BkaUser.php';    
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/models/Session.php';
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/models/Question.php';
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/models/QuestionTranslation.php';
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/controllers/RegisterController.php';
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/ShortcodeRegistrar.php';
             include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/bka-register-pages.php';
+            include_once BKA_PLATFORM_PLUGIN_PATH . '/includes/controllers/CoachController.php';
+
+            
  
             register_activation_hook(__FILE__, array($this, 'activate'));
             register_deactivation_hook(__FILE__, array($this, 'deactivate'));
@@ -71,7 +82,8 @@ if (! class_exists('BkaPlatform')) {
 
         public function activate()
         {
-            DatabaseManager::create_database();
+            $db_manager = new DatabaseManager();
+            $db_manager->create_database();
             $register_pages = new BkaRegisterPages();
             $register_pages->register();
         }
